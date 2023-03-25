@@ -20,7 +20,7 @@ const modalCreate = (e) => {
     const img = document.createElement('div')
     img.className = 'img'
     img.style.background = 'url(' + e.currentTarget.datas.image + ')';
-    img.style.backgroundSize = ' contain';
+    img.style.backgroundSize = 'cover';
     cardModal.appendChild(img)
 // наполняем модальное окно данными
     const description = document.createElement('div')
@@ -64,6 +64,7 @@ const createCard = (data) =>{
         content.appendChild(card)
     })
 }
+// page хранит информацию о странице которую необходимо подгрузить, по умалчанию 1. 
 const bildCard = (page) =>{
     fetch('https://rickandmortyapi.com/api/character/?page='+page)  
         .then(response => response.json()) 
@@ -87,20 +88,29 @@ const checkPositon = () =>{
         
       }
 }
+// считывает событие скрола и проверят нужна ли подгрузка дополниетельных блоков
 window.addEventListener('scroll',(e)=>{
-
     checkPositon()
 })
 window.onscroll = function () {scrollFunction()};
-
+//включает и выключает кнопку toUp 
 const scrollFunction = () => {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("myBtn").style.display = "block";
+        document.getElementById("myBtn").style.display = 'block';
     } else {
-        document.getElementById("myBtn").style.display = "none";
+        document.getElementById("myBtn").style.display = 'none';
+        
     }
 }
+// проматывает страницу вверх
 const topFunction = () => { 
-            document.body.scrollTop = 0 // For Safari
-            document.documentElement.scrollTop = 0 // For Chrome, Firefox, IE and Opera
+            document.body.scrollTop = 0 // Safari
+            document.documentElement.scrollTop = 0 // Chrome, Firefox, IE and Opera
 }
+// анимация для кнопки toUp
+document.getElementById('myBtn').addEventListener('hover',()=>{
+    this.style.backgroundColor = '#555'
+})
+document.getElementById('myBtn').addEventListener('mouseout ',()=>{
+    this.style.backgroundColor = 'rgb(175, 175, 175)'
+})
