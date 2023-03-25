@@ -79,3 +79,28 @@
     font-style: oblique;
 }
 }
+#myBtn {
+    width: 12vw;
+    display: none;
+    position: fixed;
+    bottom: 2vw;
+    right: 2vw;  
+    border: none; 
+    outline: none; 
+    background-color: rgb(175, 175, 175);
+    opacity: 0.4;
+    color: white;
+    cursor: pointer; 
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+#myBtn:hover {
+    background-color: #555; 
+    opacity: 1;
+    
+}
+html {
+    scroll-behavior: smooth;
+  }

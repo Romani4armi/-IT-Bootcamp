@@ -7,9 +7,11 @@ const modalCreate = (e) => {
     fonModal.addEventListener('click',() => {
         fonModal.style.display = 'none'
     })
+    // убираем модальное окно по кнопке Esc
     window.addEventListener('keydown',(e) => {
         e.key === 'Escape'?fonModal.style.display = 'none':true
     })
+    // аппендим модалку в боди, тк position:fixed 
     document.body.appendChild(fonModal)
     const cardModal = document.createElement('div');
     cardModal.className = 'cardModal'
@@ -21,54 +23,27 @@ const modalCreate = (e) => {
     img.style.backgroundSize = ' contain';
     cardModal.appendChild(img)
 // наполняем модальное окно данными
-   console.log(e.currentTarget.datas)
     const description = document.createElement('div')
     description.className = 'description'
     cardModal.appendChild(description)
     let tth = `
-        <div class="big">
-            Name:
-        </div>
-        <div class="big">
-            Origin:
-        </div>
-        <div>
-            ${e.currentTarget.datas.name}
-        </div>
-        <div>
-            ${e.currentTarget.datas.origin.name}
-        </div>
-        <div class="big">
-            Status:
-        </div>
-        <div class="big">
-            Location:
-        </div>
-        <div>
-            ${e.currentTarget.datas.status}
-        </div>
-        <div>
-            ${e.currentTarget.datas.location.name}
-        </div>
-        <div class="big">
-            Spacies:
-        </div>
-        <div class="big">
-            Gender:
-        </div>
-        <div>
-            ${e.currentTarget.datas.species}
-        </div>
-        <div>
-            ${e.currentTarget.datas.gender}
-        </div>
-    `
-    
+        <div class="big">Name:</div>
+        <div class="big">Origin:</div>
+        <div>${e.currentTarget.datas.name}</div>
+        <div>${e.currentTarget.datas.origin.name}</div>
+        <div class="big">Status:</div>
+        <div class="big">Location:</div>
+        <div>${e.currentTarget.datas.status}</div>
+        <div>${e.currentTarget.datas.location.name}</div>
+        <div class="big">Spacies:</div>
+        <div class="big">Gender:</div>
+        <div>${e.currentTarget.datas.species}</div>
+        <div>${e.currentTarget.datas.gender}</div>`
     description.innerHTML = tth
 }
 
 const createCard = (data) =>{
-       
+       // строим столько карточек сколько пришло от сервера данных в массиве и добавляем их в конец дочерних элементов 
     data.results.forEach((v)=>{
         
         const card = document.createElement('div');
@@ -95,6 +70,7 @@ const bildCard = (page) =>{
         .then (data => data.error=='There is nothing here'?true:createCard(data))
        
 }
+// определяем что пользователь пролистал почти до конца страницы и соответственно подгружаем данные
 bildCard(page)
 const checkPositon = () =>{
     const height = document.body.offsetHeight
@@ -112,6 +88,19 @@ const checkPositon = () =>{
       }
 }
 window.addEventListener('scroll',(e)=>{
-    
+
     checkPositon()
 })
+window.onscroll = function () {scrollFunction()};
+
+const scrollFunction = () => {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+const topFunction = () => { 
+            document.body.scrollTop = 0 // For Safari
+            document.documentElement.scrollTop = 0 // For Chrome, Firefox, IE and Opera
+}
