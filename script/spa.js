@@ -1,5 +1,5 @@
 let content = document.querySelector('.content');
-let page = 1;
+let page = 41;
 
 const modalCreate = (e) => {
     let fonModal = document.createElement('div');
@@ -41,11 +41,9 @@ const modalCreate = (e) => {
         <div>${e.currentTarget.datas.gender}</div>`
     description.innerHTML = tth
 }
-
 const createCard = (data) =>{
        // строим столько карточек сколько пришло от сервера данных в массиве и добавляем их в конец дочерних элементов 
     data.results.forEach((v)=>{
-        
         const card = document.createElement('div');
         card.datas = v;
         card.addEventListener('click',modalCreate)
@@ -68,8 +66,7 @@ const createCard = (data) =>{
 const bildCard = (page) =>{
     fetch('https://rickandmortyapi.com/api/character/?page='+page)  
         .then(response => response.json()) 
-        .then (data => data.error=='There is nothing here'?true:createCard(data))
-       
+        .then (data => createCard(data))   
 }
 // определяем что пользователь пролистал почти до конца страницы и соответственно подгружаем данные
 bildCard(page)
@@ -80,12 +77,10 @@ const checkPositon = () =>{
     const threshold = height - screenHeight / 5
     const position = scrolled + screenHeight
     if (position >= threshold) {
-        
         if (page<42){
             page++
             bildCard(page)
-        }
-        
+        } 
       }
 }
 // считывает событие скрола и проверят нужна ли подгрузка дополниетельных блоков
@@ -99,7 +94,6 @@ const scrollFunction = () => {
         document.getElementById("myBtn").style.display = 'block';
     } else {
         document.getElementById("myBtn").style.display = 'none';
-        
     }
 }
 // проматывает страницу вверх

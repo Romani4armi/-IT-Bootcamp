@@ -135,16 +135,16 @@ html {
     .conteiner{
         .content{
             .card{
-                width: 300px;
+                width: 280px;
                 height: 380px;
                 margin: 10px;
                 .avatar{
-                    width: 280px;
+                    width: 260px;
                     height: 280px;
                     margin: 10px;
                     img{
-                        width: 280px;
-                        height: 280px;
+                        width: 260px;
+                        height: 260px;
                     }
         }
     } 
@@ -182,4 +182,15 @@ html {
         }
     }   
   }
- 
+  @media (orientation: portrait) and (max-width:600px){
+    .cardModal{
+        height: 70vh;
+        margin-top: 15vh;
+    }
+  }
+  @media (orientation: portrait) and (max-width:500px){
+    .cardModal{
+        height: 60vh;
+        margin-top: 20vh;
+    }
+  }

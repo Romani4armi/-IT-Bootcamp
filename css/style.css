@@ -107,16 +107,16 @@ html {
 
 @media all and (max-width: 340px) {
   .conteiner .content .card {
-    width: 300px;
+    width: 280px;
     height: 380px;
     margin: 10px; }
     .conteiner .content .card .avatar {
-      width: 280px;
+      width: 260px;
       height: 280px;
       margin: 10px; }
       .conteiner .content .card .avatar img {
-        width: 280px;
-        height: 280px; } }
+        width: 260px;
+        height: 260px; } }
 @media (orientation: portrait) {
   .cardModal {
     width: 80vw;
@@ -140,5 +140,13 @@ html {
       margin-right: 1vw;
       width: 30vw;
       margin: 0; } }
+@media (orientation: portrait) and (max-width: 600px) {
+  .cardModal {
+    height: 70vh;
+    margin-top: 15vh; } }
+@media (orientation: portrait) and (max-width: 500px) {
+  .cardModal {
+    height: 60vh;
+    margin-top: 20vh; } }
 
 /*# sourceMappingURL=style.css.map */
