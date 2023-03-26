@@ -1,5 +1,5 @@
 let content = document.querySelector('.content');
-let page = 41;
+let page = 1;
 
 const modalCreate = (e) => {
     let fonModal = document.createElement('div');
